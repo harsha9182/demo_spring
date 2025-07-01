@@ -30,7 +30,7 @@ public class MasterStationController {
 
     @PostMapping("addUpdate")
     @Operation(summary = " ",
-            description ="{\"sortingId\":1,\"code\":\"abc\",\"name\":\"xyz\",\"status\":\"1\",\"createdBy\":\"Admin\"}")
+            description ="{\"zone\":1,\"code\":\"abc\",\"name\":\"xyz\",\"status\":\"1\",\"createdBy\":\"Admin\"}")
     public Map addUpdate(@RequestBody(required = false) String inputEncryptedString,@RequestHeader Map<String,String> headerMap){
         return stationMasterService.addUpdate(inputEncryptedString,headerMap);
     }

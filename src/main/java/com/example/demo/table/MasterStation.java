@@ -15,8 +15,8 @@ public class MasterStation {
     @Column(length = 50)
     private String uuid;
 
-    @Column(length = 50)
-    private int sortingId;
+    @Column(length = 5)
+    private int zone;
 
     @Column(length = 50)
     private String divId;
