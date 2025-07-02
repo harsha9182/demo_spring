@@ -66,13 +66,10 @@ public class LocalStorageService {
 
 
 
-    public Map<String, Object> localFileUpload(MultipartFile multiPartFile, Map<String, String> headerMap, HttpServletRequest request) {
+    public Map<String, Object> localFileUpload(MultipartFile multiPartFile, HttpServletRequest request) {
         try {
             // Validate the request
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
+
 
             // Validate file input
             if (multiPartFile.isEmpty()) {
@@ -128,13 +125,9 @@ public class LocalStorageService {
 
 
 
-    public Map<String, Object> deleteFile(String url, Map<String, String> headerMap) {
+    public Map<String, Object> deleteFile(String url) {
         try {
-            // Validate the API request
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
+
 
             // Extract and decode the file name from the URL
             String rawFileName = url.substring(url.lastIndexOf("/") + 1);
@@ -198,13 +191,10 @@ public class LocalStorageService {
 
     }
 
-    public Map<String, Object> localFileUploadFolder(MultipartFile multiPartFile, Map<String, String> headerMap, HttpServletRequest request, String folderName) {
+    public Map<String, Object> localFileUploadFolder(MultipartFile multiPartFile, HttpServletRequest request, String folderName) {
         try {
             // Validate API request
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
+
 
             // Validate folder name
             if (appUtils.isNull(folderName) || folderName.trim().isEmpty()) {

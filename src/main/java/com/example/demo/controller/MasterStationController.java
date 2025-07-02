@@ -16,16 +16,16 @@ public class MasterStationController {
     private MasterStationService stationMasterService;
 
     @GetMapping("getAll")
-    public Map getAll(@RequestHeader Map<String,String> headerMap)
+    public Map getAll()
     {
-        return stationMasterService.getAll(headerMap);
+        return stationMasterService.getAll();
     }
 
     @GetMapping("getById/{id}")
     @Operation(summary = " ",
             description ="stationId")
-    public Map getById(@PathVariable(required = false) String id,@RequestHeader Map<String,String> headerMap) {
-        return stationMasterService.getById(id,headerMap);
+    public Map getById(@PathVariable(required = false) String id) {
+        return stationMasterService.getById(id);
     }
 
     @PostMapping("addUpdate")

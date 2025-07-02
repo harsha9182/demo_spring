@@ -38,13 +38,9 @@ public class MasterStudentService {
 
 
 
-    public Map getAll(Map<String, String> headerMap) {
+    public Map getAll() {
         try {
-            APIRequestValidation requestValidation=apiRequestValidationService.requestValidation(headerMap);
 
-            if(requestValidation.isInvalid()){
-                return requestValidation.getMap();
-            }
             List<MasterStudent> masterStudentList=masterStudentRepository.findAll();
             return controllerUtils.successResponseList(masterStudentList);
         }
@@ -54,13 +50,9 @@ public class MasterStudentService {
         }
     }
 
-    public Map getById(String inputEncryptedId, Map<String, String> headerMap) {
+    public Map getById(String inputEncryptedId) {
         try{
-            APIRequestValidation requestValidation=apiRequestValidationService.requestValidation(headerMap);
-            if (requestValidation.isInvalid()) {
 
-                return requestValidation.getMap();
-            }
 
             String inputDecryptedId = appUtils.decryptedString(inputEncryptedId);
 
@@ -84,15 +76,11 @@ public class MasterStudentService {
         }
     }
 
-    public Map addUpdate(String inputEncryptedString, Map<String, String> headerMap) {
+    public Map addUpdate(String inputEncryptedString) {
         try{
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
 
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
 
             //--encrypted to decrypted
             String inputDecryptedString = appUtils.decryptedString(inputEncryptedString);
@@ -130,17 +118,13 @@ public class MasterStudentService {
         }
     }
 
-    public Map actions(String inputEncryptedString, Map<String, String> headerMap) {
+    public Map actions(String inputEncryptedString) {
         try {
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
 
             //---request validation---
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
 
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
 
             //--encrypted to decrypted
             String inputDecryptedString = appUtils.decryptedString(inputEncryptedString);
@@ -168,16 +152,12 @@ public class MasterStudentService {
     }
 
 
-    public Map deleteByIds(String inputEncryptedString, Map<String, String> headerMap) {
+    public Map deleteByIds(String inputEncryptedString) {
         try {
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
             //---request validation---
-            APIRequestValidation requestValidation = apiRequestValidationService.requestValidation(headerMap);
 
-            if (requestValidation.isInvalid()) {
-                return requestValidation.getMap();
-            }
             String inputDecryptedString = appUtils.decryptedString(inputEncryptedString);
 
             if (appUtils.isNull(inputEncryptedString)) {

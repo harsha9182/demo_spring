@@ -15,9 +15,9 @@ public class MasterStudentController {
     private MasterStudentService masterStudentService;
 
     @GetMapping("getAll")
-    public Map getAll(@RequestHeader Map<String,String> headerMap)
+    public Map getAll()
     {
-        return masterStudentService.getAll(headerMap);
+        return masterStudentService.getAll();
     }
 
     @GetMapping("getById/{id}")

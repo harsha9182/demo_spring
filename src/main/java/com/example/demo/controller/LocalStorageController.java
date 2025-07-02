@@ -16,9 +16,9 @@ public class LocalStorageController {
     @Autowired
     private LocalStorageService localStorageService;
     @PostMapping(value = "uploadFile", consumes = "multipart/form-data")
-    public Map localFileUpload(@RequestParam(name = "file", required = false) MultipartFile multiPartFile, @RequestHeader Map<String, String> headerMap, HttpServletRequest request) {
+    public Map localFileUpload(@RequestParam(name = "file", required = false) MultipartFile multiPartFile, HttpServletRequest request) {
 
-        return  localStorageService.localFileUpload(multiPartFile,headerMap,request);
+        return  localStorageService.localFileUpload(multiPartFile,request);
     }
 
     @DeleteMapping("/deleteFile")
