@@ -26,21 +26,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(Customizer.withDefaults()) // ✅ Enable CORS in Spring Security
+                .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/getAll",                         // ✅ your public endpoint
                                 "/v3/api-docs/**",
-                                "/swagger-ui.html",
-                                "/swagger-ui/**"
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
                         ).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().authenticated()         // 🔐 everything else is protected
                 )
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults());     // optional, enables basic auth
 
         return http.build();
     }
-
 
 
 
