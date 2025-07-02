@@ -23,7 +23,7 @@ public class LocalStorageController {
 
     @DeleteMapping("/deleteFile")
     public Map deleteFile(@RequestParam String url,@RequestHeader Map<String, String> headerMap) {
-      return localStorageService.deleteFile(url,headerMap);
+      return localStorageService.deleteFile(url);
     }
 
     @GetMapping("getFilePathInSystem")
@@ -38,7 +38,7 @@ public class LocalStorageController {
             HttpServletRequest request,
             @RequestParam(name = "folderName", required = false) String folderName) {
 
-        return localStorageService.localFileUploadFolder(multiPartFile, headerMap, request, folderName);
+        return localStorageService.localFileUploadFolder(multiPartFile, request, folderName);
     }
 
 }

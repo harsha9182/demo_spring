@@ -31,22 +31,22 @@ public class MasterStationController {
     @PostMapping("addUpdate")
     @Operation(summary = " ",
             description ="{\"zone\":1,\"code\":\"abc\",\"name\":\"xyz\",\"status\":\"1\",\"createdBy\":\"Admin\"}")
-    public Map addUpdate(@RequestBody(required = false) String inputEncryptedString,@RequestHeader Map<String,String> headerMap){
-        return stationMasterService.addUpdate(inputEncryptedString,headerMap);
+    public Map addUpdate(@RequestBody(required = false) String inputEncryptedString){
+        return stationMasterService.addUpdate(inputEncryptedString);
     }
 
     @PostMapping("actions")
     @Operation(summary = " ",
             description ="{\"ids\":[\"ids\"],\"status\":\"0\"}")
-    public Map actions(@RequestBody(required = false) String inputEncryptedString,@RequestHeader Map<String,String> headerMap){
-        return stationMasterService.actions(inputEncryptedString,headerMap);
+    public Map actions(@RequestBody(required = false) String inputEncryptedString){
+        return stationMasterService.actions(inputEncryptedString);
     }
 
     @PostMapping("addBulkData")
     @Operation(summary = "Add or update stations",
             description = "{[{\"code\":\"1\",\"name\":\"abc\",\"createdBy\":\"ZA\"},{\"code\":\"2\",\"name\":\"xyz\",\"createdBy\":\"US\"}]}")
-    public Map addBulkData(@RequestBody(required = false) String  inputEncryptedString, @RequestHeader Map<String,String> headerMap){
-        return stationMasterService.addBulkData(inputEncryptedString,headerMap);
+    public Map addBulkData(@RequestBody(required = false) String  inputEncryptedString){
+        return stationMasterService.addBulkData(inputEncryptedString);
     }
 
 
